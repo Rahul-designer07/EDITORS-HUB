@@ -1,494 +1,1301 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Editors Hub — Creative Editing Agency</title>
+<title>Editors Hub — Creative Editing Studio</title>
 
-    <meta name="description" content="Editors Hub — A creative hub for professional video editing, thumbnails, graphics and digital content.">
+<meta name="description" content="Editors Hub is a creative editing studio and community connecting creators, businesses and talented editors.">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #080808;
-            color: #ffffff;
-            line-height: 1.6;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        /* NAVBAR */
-
-        header {
-            width: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            background: rgba(8, 8, 8, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid #222;
-        }
-
-        nav {
-            max-width: 1150px;
-            margin: auto;
-            padding: 18px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-    display: flex;
-    align-items: center;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.logo img {
-    width: 48px;
-    height: 48px;
-    object-fit: contain;
-    display: block;
+html{
+    scroll-behavior:smooth;
 }
 
-        .logo span {
-            color: #8b5cf6;
-        }
+body{
+    background:#070707;
+    color:#f5f5f5;
+    font-family:Inter,Arial,sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 28px;
-            list-style: none;
-            font-size: 14px;
-            color: #bdbdbd;
-        }
+body:before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#7047ff;
+    opacity:.06;
+    filter:blur(140px);
+    top:-250px;
+    right:-150px;
+    pointer-events:none;
+    z-index:-1;
+}
 
-        .nav-links a:hover {
-            color: #ffffff;
-        }
+a{
+    color:inherit;
+    text-decoration:none;
+}
 
-        /* HERO */
+button{
+    font:inherit;
+}
 
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 120px 25px 80px;
-            background:
-                radial-gradient(circle at 50% 30%, rgba(139, 92, 246, 0.18), transparent 35%),
-                #080808;
-        }
+.container{
+    width:min(1160px,calc(100% - 40px));
+    margin:auto;
+}
 
-        .hero-content {
-            max-width: 850px;
-        }
+/* NAVIGATION */
 
-        .badge {
-            display: inline-block;
-            padding: 7px 14px;
-            border: 1px solid #333;
-            border-radius: 30px;
-            color: #bdbdbd;
-            font-size: 13px;
-            margin-bottom: 25px;
-        }
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(7,7,7,.78);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
 
-        .hero h1 {
-            font-size: clamp(48px, 8vw, 90px);
-            line-height: 0.95;
-            letter-spacing: -5px;
-            margin-bottom: 25px;
-        }
+.nav{
+    height:76px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
 
-        .hero h1 span {
-            color: #8b5cf6;
-        }
+.brand{
+    display:flex;
+    align-items:center;
+}
 
-        .hero p {
-            max-width: 650px;
-            margin: auto;
-            color: #a5a5a5;
-            font-size: 18px;
-        }
+.brand img{
+    width:46px;
+    height:46px;
+    object-fit:contain;
+}
 
-        .buttons {
-            margin-top: 35px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:32px;
+    list-style:none;
+    color:#9c9c9c;
+    font-size:14px;
+}
 
-        .button {
-            padding: 13px 22px;
-            border-radius: 8px;
-            font-weight: 700;
-            transition: 0.25s;
-        }
+.nav-links a{
+    transition:.25s;
+}
 
-        .primary {
-            background: #ffffff;
-            color: #000000;
-        }
+.nav-links a:hover{
+    color:white;
+}
 
-        .primary:hover {
-            transform: translateY(-3px);
-        }
+.nav-cta{
+    padding:11px 18px;
+    border:1px solid #303030;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:600;
+    transition:.25s;
+}
 
-        .secondary {
-            border: 1px solid #333;
-            color: #ffffff;
-        }
+.nav-cta:hover{
+    background:#fff;
+    color:#000;
+}
 
-        .secondary:hover {
-            background: #151515;
-        }
+/* HERO */
 
-        /* SECTIONS */
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:150px 0 100px;
+    position:relative;
+}
 
-        section {
-            max-width: 1150px;
-            margin: auto;
-            padding: 100px 25px;
-        }
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:70px;
+    align-items:center;
+}
 
-        .section-title {
-            font-size: 42px;
-            margin-bottom: 12px;
-            letter-spacing: -1px;
-        }
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    color:#a6a6a6;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:1.8px;
+    text-transform:uppercase;
+    margin-bottom:25px;
+}
 
-        .section-description {
-            color: #929292;
-            max-width: 600px;
-            margin-bottom: 45px;
-        }
+.dot{
+    width:7px;
+    height:7px;
+    background:#8b6cff;
+    border-radius:50%;
+    box-shadow:0 0 15px #8b6cff;
+}
 
-        /* SERVICES */
+.hero h1{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:clamp(58px,8vw,105px);
+    line-height:.92;
+    letter-spacing:-6px;
+    max-width:850px;
+}
 
-        .services {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-        }
+.hero h1 span{
+    color:#8b6cff;
+}
 
-        .service {
-            background: #101010;
-            border: 1px solid #222;
-            border-radius: 15px;
-            padding: 28px;
-            transition: 0.25s;
-        }
+.hero-copy{
+    color:#969696;
+    max-width:570px;
+    font-size:17px;
+    margin-top:28px;
+}
 
-        .service:hover {
-            transform: translateY(-5px);
-            border-color: #444;
-        }
+.hero-actions{
+    display:flex;
+    gap:13px;
+    flex-wrap:wrap;
+    margin-top:35px;
+}
 
-        .service-number {
-            color: #8b5cf6;
-            font-size: 13px;
-            font-weight: bold;
-            margin-bottom: 35px;
-        }
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:48px;
+    padding:0 21px;
+    border-radius:8px;
+    font-size:14px;
+    font-weight:700;
+    transition:.3s;
+}
 
-        .service h3 {
-            margin-bottom: 10px;
-        }
+.btn-primary{
+    background:#f5f5f5;
+    color:#050505;
+}
 
-        .service p {
-            color: #888;
-            font-size: 14px;
-        }
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 30px rgba(255,255,255,.12);
+}
 
-        /* ABOUT */
+.btn-outline{
+    border:1px solid #303030;
+    color:#eee;
+}
 
-        .about {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
+.btn-outline:hover{
+    border-color:#666;
+    background:#151515;
+    transform:translateY(-3px);
+}
 
-        .about-box {
-            background: #101010;
-            border: 1px solid #222;
-            border-radius: 18px;
-            padding: 35px;
-        }
+.hero-card{
+    position:relative;
+    min-height:420px;
+    border:1px solid #242424;
+    border-radius:24px;
+    background:
+        radial-gradient(circle at 75% 20%,rgba(139,108,255,.23),transparent 32%),
+        linear-gradient(145deg,#111,#090909);
+    overflow:hidden;
+    display:flex;
+    align-items:flex-end;
+    padding:30px;
+}
 
-        .about-box p {
-            color: #999;
-            margin-top: 15px;
-        }
+.hero-card:before{
+    content:"EH";
+    position:absolute;
+    font-family:"Space Grotesk";
+    font-size:190px;
+    font-weight:700;
+    color:rgba(255,255,255,.025);
+    right:-20px;
+    top:40px;
+    letter-spacing:-15px;
+}
 
-        /* CTA */
+.card-content{
+    position:relative;
+    z-index:2;
+}
 
-        .cta {
-            text-align: center;
-            background: linear-gradient(
-                135deg,
-                #111111,
-                #17111f
-            );
-            border: 1px solid #292929;
-            border-radius: 25px;
-            padding: 75px 25px;
-        }
+.card-label{
+    color:#858585;
+    font-size:11px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+}
 
-        .cta h2 {
-            font-size: 45px;
-            margin-bottom: 15px;
-        }
+.card-content h3{
+    font-family:"Space Grotesk";
+    font-size:30px;
+    margin-top:8px;
+}
 
-        .cta p {
-            color: #999;
-            margin-bottom: 30px;
-        }
+.card-line{
+    width:55px;
+    height:2px;
+    background:#8b6cff;
+    margin-top:20px;
+}
 
-        /* FOOTER */
+/* SECTIONS */
 
-        footer {
-            border-top: 1px solid #222;
-            padding: 30px 25px;
-            text-align: center;
-            color: #666;
-            font-size: 13px;
-        }
+section{
+    padding:115px 0;
+}
 
-        /* MOBILE */
+.section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:30px;
+    margin-bottom:48px;
+}
 
-        @media (max-width: 800px) {
+.section-kicker{
+    color:#8b6cff;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:12px;
+}
 
-            .nav-links {
-                display: none;
-            }
+.section-title{
+    font-family:"Space Grotesk";
+    font-size:clamp(36px,5vw,58px);
+    line-height:1;
+    letter-spacing:-2.5px;
+}
 
-            .services {
-                grid-template-columns: 1fr 1fr;
-            }
+.section-description{
+    color:#818181;
+    max-width:470px;
+    font-size:14px;
+}
 
-            .about {
-                grid-template-columns: 1fr;
-            }
+/* SERVICES */
 
-            .hero h1 {
-                letter-spacing: -3px;
-            }
-        }
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+}
 
-        @media (max-width: 500px) {
+.service{
+    min-height:270px;
+    padding:27px;
+    background:#0d0d0d;
+    border:1px solid #202020;
+    border-radius:16px;
+    transition:.3s;
+}
 
-            .services {
-                grid-template-columns: 1fr;
-            }
+.service:hover{
+    transform:translateY(-6px);
+    border-color:#383838;
+    background:#111;
+}
 
-            .section-title {
-                font-size: 34px;
-            }
+.service-number{
+    font-family:"Space Grotesk";
+    color:#696969;
+    font-size:12px;
+}
 
-            .cta h2 {
-                font-size: 34px;
-            }
-        }
-    </style>
+.service-icon{
+    margin-top:45px;
+    font-size:25px;
+    color:#8b6cff;
+}
+
+.service h3{
+    font-family:"Space Grotesk";
+    font-size:21px;
+    margin-top:17px;
+}
+
+.service p{
+    color:#777;
+    font-size:13px;
+    margin-top:8px;
+}
+
+/* WORK */
+
+.work-grid{
+    display:grid;
+    grid-template-columns:1.35fr .65fr;
+    gap:14px;
+}
+
+.work-card{
+    min-height:350px;
+    border:1px solid #202020;
+    border-radius:18px;
+    background:#101010;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:flex-end;
+    transition:.3s;
+}
+
+.work-card:hover{
+    transform:translateY(-5px);
+    border-color:#3b3b3b;
+}
+
+.work-card.large{
+    min-height:520px;
+}
+
+.work-visual{
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at 70% 25%,rgba(139,108,255,.25),transparent 28%),
+        linear-gradient(135deg,#171717,#090909);
+}
+
+.work-visual.two{
+    background:
+        radial-gradient(circle at 25% 35%,rgba(255,255,255,.08),transparent 25%),
+        linear-gradient(145deg,#141414,#080808);
+}
+
+.work-visual.three{
+    background:
+        radial-gradient(circle at 70% 70%,rgba(139,108,255,.17),transparent 25%),
+        linear-gradient(135deg,#121212,#080808);
+}
+
+.work-number{
+    position:absolute;
+    top:28px;
+    left:28px;
+    font-family:"Space Grotesk";
+    font-size:70px;
+    color:rgba(255,255,255,.045);
+}
+
+.work-info{
+    position:relative;
+    z-index:2;
+    width:100%;
+    padding:28px;
+    background:linear-gradient(transparent,rgba(0,0,0,.92));
+    padding-top:100px;
+}
+
+.work-info span{
+    color:#8b6cff;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+}
+
+.work-info h3{
+    font-family:"Space Grotesk";
+    font-size:25px;
+    margin-top:5px;
+}
+
+.work-info p{
+    color:#858585;
+    font-size:13px;
+}
+
+/* COMMUNITY */
+
+.community{
+    border-top:1px solid #1c1c1c;
+    border-bottom:1px solid #1c1c1c;
+}
+
+.community-box{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.community-copy p{
+    color:#858585;
+    font-size:15px;
+    max-width:540px;
+    margin-top:25px;
+}
+
+.community-list{
+    margin-top:28px;
+    display:grid;
+    gap:13px;
+}
+
+.community-item{
+    display:flex;
+    gap:13px;
+    align-items:center;
+    color:#aaa;
+    font-size:14px;
+}
+
+.check{
+    width:23px;
+    height:23px;
+    border:1px solid #343434;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#8b6cff;
+    font-size:11px;
+}
+
+.community-panel{
+    padding:38px;
+    border:1px solid #262626;
+    border-radius:20px;
+    background:
+        radial-gradient(circle at 80% 10%,rgba(139,108,255,.16),transparent 30%),
+        #0d0d0d;
+}
+
+.community-panel .small{
+    color:#777;
+    font-size:11px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+}
+
+.community-panel h3{
+    font-family:"Space Grotesk";
+    font-size:32px;
+    margin-top:10px;
+}
+
+.community-panel p{
+    color:#777;
+    font-size:13px;
+    margin:12px 0 25px;
+}
+
+/* PROCESS */
+
+.process-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border-top:1px solid #252525;
+}
+
+.process{
+    padding:30px 25px 10px 0;
+    border-right:1px solid #252525;
+}
+
+.process:not(:first-child){
+    padding-left:25px;
+}
+
+.process:last-child{
+    border-right:none;
+}
+
+.process span{
+    color:#8b6cff;
+    font-size:12px;
+    font-weight:700;
+}
+
+.process h3{
+    font-family:"Space Grotesk";
+    font-size:21px;
+    margin-top:20px;
+}
+
+.process p{
+    color:#777;
+    font-size:13px;
+    margin-top:8px;
+}
+
+/* ABOUT */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:70px;
+}
+
+.about-text p{
+    color:#858585;
+    font-size:15px;
+    margin-top:25px;
+}
+
+.about-stats{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.stat{
+    padding:30px;
+    border:1px solid #222;
+    border-radius:15px;
+    background:#0d0d0d;
+}
+
+.stat strong{
+    display:block;
+    font-family:"Space Grotesk";
+    font-size:36px;
+}
+
+.stat span{
+    color:#777;
+    font-size:12px;
+}
+
+/* CTA */
+
+.cta{
+    padding:90px 30px;
+    text-align:center;
+    border:1px solid #292929;
+    border-radius:25px;
+    background:
+        radial-gradient(circle at 50% 0%,rgba(139,108,255,.18),transparent 35%),
+        #0d0d0d;
+}
+
+.cta .section-title{
+    max-width:700px;
+    margin:auto;
+}
+
+.cta p{
+    color:#7f7f7f;
+    max-width:520px;
+    margin:20px auto 30px;
+    font-size:14px;
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid #1d1d1d;
+    padding:45px 0;
+}
+
+.footer-top{
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    align-items:center;
+}
+
+.footer-brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-family:"Space Grotesk";
+    font-weight:700;
+}
+
+.footer-brand img{
+    width:38px;
+    height:38px;
+    object-fit:contain;
+}
+
+.footer-links{
+    display:flex;
+    gap:25px;
+    color:#777;
+    font-size:12px;
+}
+
+.footer-links a:hover{
+    color:white;
+}
+
+.copyright{
+    color:#555;
+    font-size:11px;
+    margin-top:35px;
+}
+
+/* ANIMATION */
+
+.reveal{
+    animation:fadeUp .8s ease both;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(18px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-card{
+        min-height:300px;
+    }
+
+    .services-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .community-box,
+    .about-grid{
+        grid-template-columns:1fr;
+    }
+
+    .work-grid{
+        grid-template-columns:1fr;
+    }
+
+    .process-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .process{
+        border-bottom:1px solid #252525;
+        border-right:none;
+    }
+
+    .process:nth-child(odd){
+        padding-left:0;
+        padding-right:25px;
+        border-right:1px solid #252525;
+    }
+
+    .process:nth-child(even){
+        padding-left:25px;
+    }
+}
+
+@media(max-width:600px){
+
+    .container{
+        width:min(100% - 28px,1160px);
+    }
+
+    .nav{
+        height:68px;
+    }
+
+    .brand img{
+        width:40px;
+        height:40px;
+    }
+
+    .nav-cta{
+        padding:9px 13px;
+        font-size:11px;
+    }
+
+    .hero{
+        padding:125px 0 70px;
+    }
+
+    .hero h1{
+        font-size:55px;
+        letter-spacing:-4px;
+    }
+
+    .hero-copy{
+        font-size:15px;
+    }
+
+    section{
+        padding:80px 0;
+    }
+
+    .section-head{
+        display:block;
+    }
+
+    .section-description{
+        margin-top:20px;
+    }
+
+    .services-grid{
+        grid-template-columns:1fr;
+    }
+
+    .service{
+        min-height:220px;
+    }
+
+    .service-icon{
+        margin-top:30px;
+    }
+
+    .work-card,
+    .work-card.large{
+        min-height:330px;
+    }
+
+    .community-panel{
+        padding:27px;
+    }
+
+    .process-grid{
+        grid-template-columns:1fr;
+    }
+
+    .process,
+    .process:nth-child(odd),
+    .process:nth-child(even){
+        padding:25px 0;
+        border-right:none;
+    }
+
+    .about-stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .stat{
+        padding:22px;
+    }
+
+    .stat strong{
+        font-size:29px;
+    }
+
+    .footer-top{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .footer-links{
+        flex-wrap:wrap;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<header>
-    <nav>
-        <a href="#" class="logo">
-    <img src="file_00000000a0bc820bab5b7a810ce500e4.png" alt="Editors Hub Logo">
-</a>
+<!-- NAVIGATION -->
+
+<header class="navbar">
+    <div class="container nav">
+
+        <a href="#" class="brand">
+            <img src="file_00000000a0bc820bab5b7a810ce500e4.png" alt="Editors Hub">
+        </a>
 
         <ul class="nav-links">
+            <li><a href="#work">Work</a></li>
             <li><a href="#services">Services</a></li>
+            <li><a href="#community">Community</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
         </ul>
-    </nav>
+
+        <a href="#contact" class="nav-cta">Start a Project</a>
+
+    </div>
 </header>
+
 
 <main>
 
-    <!-- HERO -->
+<!-- HERO -->
 
-    <div class="hero">
-        <div class="hero-content">
+<section class="hero">
+    <div class="container hero-grid">
 
-            <div class="badge">CREATIVE EDITING AGENCY</div>
+        <div class="reveal">
+
+            <div class="eyebrow">
+                <span class="dot"></span>
+                Creative Editing Studio
+            </div>
 
             <h1>
-                We turn ideas<br>
-                into <span>impact.</span>
+                Your Vision.<br>
+                <span>Our Edit.</span>
             </h1>
 
-            <p>
-                Editors Hub is a creative team focused on video editing,
-                thumbnails, graphics and digital content.
+            <p class="hero-copy">
+                Editors Hub connects creators and businesses with
+                talented editors who turn raw ideas into content
+                people remember.
             </p>
 
-            <div class="buttons">
-                <a href="#services" class="button primary">
-                    Explore Services
+            <div class="hero-actions">
+                <a href="#contact" class="btn btn-primary">
+                    Hire an Editor
                 </a>
 
-                <a href="#contact" class="button secondary">
-                    Work With Us
+                <a href="#community" class="btn btn-outline">
+                    Join the Community
                 </a>
             </div>
 
         </div>
+
+        <div class="hero-card reveal">
+
+            <div class="card-content">
+
+                <div class="card-label">
+                    Editors Hub / 2026
+                </div>
+
+                <h3>
+                    Built for creators.<br>
+                    Driven by editors.
+                </h3>
+
+                <div class="card-line"></div>
+
+            </div>
+
+        </div>
+
     </div>
+</section>
 
 
-    <!-- SERVICES -->
+<!-- WORK -->
 
-    <section id="services">
+<section id="work">
 
-        <h2 class="section-title">What we do</h2>
+    <div class="container">
 
-        <p class="section-description">
-            From short-form content to complete visual branding,
-            our editors help creators and businesses look better online.
-        </p>
-
-        <div class="services">
-
-            <div class="service">
-                <div class="service-number">01</div>
-                <h3>Video Editing</h3>
-                <p>
-                    Reels, shorts, YouTube videos and cinematic edits
-                    designed to keep viewers watching.
-                </p>
-            </div>
-
-            <div class="service">
-                <div class="service-number">02</div>
-                <h3>Thumbnails</h3>
-                <p>
-                    High-impact YouTube thumbnails designed to
-                    capture attention and improve clicks.
-                </p>
-            </div>
-
-            <div class="service">
-                <div class="service-number">03</div>
-                <h3>Graphics</h3>
-                <p>
-                    Social media posts, banners, promotional graphics
-                    and other digital designs.
-                </p>
-            </div>
-
-            <div class="service">
-                <div class="service-number">04</div>
-                <h3>Branding</h3>
-                <p>
-                    Logos, banners and visual identities for creators,
-                    gaming channels and online brands.
-                </p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ABOUT -->
-
-    <section id="about">
-
-        <div class="about">
+        <div class="section-head">
 
             <div>
-                <h2 class="section-title">
-                    Built by editors.<br>
-                    Made for creators.
-                </h2>
-
-                <p class="section-description">
-                    Editors Hub brings creative editors together in one
-                    community so clients can find the right talent for
-                    their projects.
-                </p>
+                <div class="section-kicker">Selected Work</div>
+                <h2 class="section-title">Made to be noticed.</h2>
             </div>
 
-            <div class="about-box">
+            <p class="section-description">
+                A selection of the visual work we create for creators,
+                channels, brands and digital businesses.
+            </p>
 
-                <h3>Why Editors Hub?</h3>
+        </div>
 
-                <p>
-                    We believe great editing isn't just about effects.
-                    It's about storytelling, pacing, design and knowing
-                    what makes an audience stop scrolling.
-                </p>
 
-                <p>
-                    Our goal is simple: connect talented editors with
-                    creators and businesses that need great content.
-                </p>
+        <div class="work-grid">
+
+            <div class="work-card large">
+                <div class="work-visual"></div>
+                <div class="work-number">01</div>
+
+                <div class="work-info">
+                    <span>Video Editing</span>
+                    <h3>Short-form Content</h3>
+                    <p>Fast pacing, clean storytelling and modern visual direction.</p>
+                </div>
+            </div>
+
+
+            <div>
+
+                <div class="work-card">
+                    <div class="work-visual two"></div>
+                    <div class="work-number">02</div>
+
+                    <div class="work-info">
+                        <span>Design</span>
+                        <h3>YouTube Thumbnails</h3>
+                        <p>Visuals designed to earn attention.</p>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="work-card">
+                    <div class="work-visual three"></div>
+                    <div class="work-number">03</div>
+
+                    <div class="work-info">
+                        <span>Branding</span>
+                        <h3>Digital Identity</h3>
+                        <p>Graphics that make a brand recognizable.</p>
+                    </div>
+                </div>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+</section>
 
 
-    <!-- CONTACT / CTA -->
+<!-- SERVICES -->
 
-    <section id="contact">
+<section id="services">
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <div>
+                <div class="section-kicker">Capabilities</div>
+                <h2 class="section-title">What we do.</h2>
+            </div>
+
+            <p class="section-description">
+                From the first cut to the final pixel, our creative
+                services are built around digital content.
+            </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+            <div class="service">
+                <div class="service-number">01 / VIDEO</div>
+                <div class="service-icon">◈</div>
+                <h3>Video Editing</h3>
+                <p>
+                    Reels, Shorts, YouTube videos, cinematic edits
+                    and social content.
+                </p>
+            </div>
+
+            <div class="service">
+                <div class="service-number">02 / DESIGN</div>
+                <div class="service-icon">◇</div>
+                <h3>Thumbnails</h3>
+                <p>
+                    High-impact YouTube thumbnails designed around
+                    clarity, curiosity and clicks.
+                </p>
+            </div>
+
+            <div class="service">
+                <div class="service-number">03 / GRAPHICS</div>
+                <div class="service-icon">✦</div>
+                <h3>Social Graphics</h3>
+                <p>
+                    Posts, promotional artwork, banners and digital
+                    campaign graphics.
+                </p>
+            </div>
+
+            <div class="service">
+                <div class="service-number">04 / BRANDING</div>
+                <div class="service-icon">○</div>
+                <h3>Brand Identity</h3>
+                <p>
+                    Logos, channel identity and visual systems for
+                    creators and online brands.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- COMMUNITY -->
+
+<section id="community" class="community">
+
+    <div class="container community-box">
+
+        <div class="community-copy">
+
+            <div class="section-kicker">The Community</div>
+
+            <h2 class="section-title">
+                More than an agency.
+            </h2>
+
+            <p>
+                Editors Hub is also a community where editors can
+                connect, collaborate, improve their skills and discover
+                opportunities.
+            </p>
+
+            <div class="community-list">
+
+                <div class="community-item">
+                    <div class="check">✓</div>
+                    Connect with other editors
+                </div>
+
+                <div class="community-item">
+                    <div class="check">✓</div>
+                    Share work and receive feedback
+                </div>
+
+                <div class="community-item">
+                    <div class="check">✓</div>
+                    Find collaboration opportunities
+                </div>
+
+                <div class="community-item">
+                    <div class="check">✓</div>
+                    Grow with a creative network
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="community-panel">
+
+            <div class="small">Editors Hub Community</div>
+
+            <h3>Build. Learn. Create.</h3>
+
+            <p>
+                A place for editors and creators to meet,
+                collaborate and build something bigger.
+            </p>
+
+            <a href="#contact" class="btn btn-primary">
+                Enter Editors Hub
+            </a>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- PROCESS -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <div>
+                <div class="section-kicker">Our Process</div>
+                <h2 class="section-title">Simple. Clear. Creative.</h2>
+            </div>
+
+        </div>
+
+
+        <div class="process-grid">
+
+            <div class="process">
+                <span>01</span>
+                <h3>Brief</h3>
+                <p>
+                    You tell us what you're trying to achieve.
+                </p>
+            </div>
+
+            <div class="process">
+                <span>02</span>
+                <h3>Match</h3>
+                <p>
+                    We connect the project with the right creative.
+                </p>
+            </div>
+
+            <div class="process">
+                <span>03</span>
+                <h3>Create</h3>
+                <p>
+                    The editor turns the concept into finished content.
+                </p>
+            </div>
+
+            <div class="process">
+                <span>04</span>
+                <h3>Deliver</h3>
+                <p>
+                    You receive polished content ready to publish.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <div class="container about-grid">
+
+        <div class="about-text">
+
+            <div class="section-kicker">About Editors Hub</div>
+
+            <h2 class="section-title">
+                A network of creative minds.
+            </h2>
+
+            <p>
+                Editors Hub was created around a simple idea:
+                talented editors should have a place where their skills
+                can meet real opportunities.
+            </p>
+
+            <p>
+                We bring together editing, design and creative talent
+                to help creators and businesses produce better digital
+                content.
+            </p>
+
+        </div>
+
+
+        <div class="about-stats">
+
+            <div class="stat">
+                <strong>01</strong>
+                <span>Creative Network</span>
+            </div>
+
+            <div class="stat">
+                <strong>24/7</strong>
+                <span>Community Access</span>
+            </div>
+
+            <div class="stat">
+                <strong>04+</strong>
+                <span>Core Services</span>
+            </div>
+
+            <div class="stat">
+                <strong>∞</strong>
+                <span>Creative Possibilities</span>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- CTA -->
+
+<section id="contact">
+
+    <div class="container">
 
         <div class="cta">
 
-            <h2>Have a project?</h2>
+            <div class="section-kicker">Let's Work Together</div>
+
+            <h2 class="section-title">
+                Have something worth creating?
+            </h2>
 
             <p>
-                Let's create something worth watching.
+                Tell us what you're building and let's turn the idea
+                into content that stands out.
             </p>
 
-            <div class="buttons">
+            <div class="hero-actions" style="justify-content:center;">
 
-                <!-- Replace this link with your Discord invite later -->
-
-                <a href="#" class="button primary">
+                <a href="#community" class="btn btn-primary">
                     Join Editors Hub
                 </a>
 
-                <a href="mailto:hello@editorshub.com" class="button secondary">
-                    Contact Us
+                <a href="#work" class="btn btn-outline">
+                    See Our Work
                 </a>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+</section>
 
 </main>
 
 
+<!-- FOOTER -->
+
 <footer>
-    © 2026 Editors Hub. All rights reserved.
+
+    <div class="container">
+
+        <div class="footer-top">
+
+            <div class="footer-brand">
+
+                <img src="file_00000000a0bc820bab5b7a810ce500e4.png"
+                     alt="Editors Hub">
+
+                <span>EDITORS HUB</span>
+
+            </div>
+
+            <div class="footer-links">
+                <a href="#work">Work</a>
+                <a href="#services">Services</a>
+                <a href="#community">Community</a>
+                <a href="#about">About</a>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 Editors Hub. All rights reserved.
+        </div>
+
+    </div>
+
 </footer>
 
 </body>
