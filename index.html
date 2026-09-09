@@ -1,1 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Editors Hub — Creative Editing Agency</title>
+
+    <meta name="description" content="Editors Hub — A creative hub for professional video editing, thumbnails, graphics and digital content.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080808;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* NAVBAR */
+
+        header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: rgba(8, 8, 8, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #222;
+        }
+
+        nav {
+            max-width: 1150px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #8b5cf6;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            font-size: 14px;
+            color: #bdbdbd;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 25px 80px;
+            background:
+                radial-gradient(circle at 50% 30%, rgba(139, 92, 246, 0.18), transparent 35%),
+                #080808;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 7px 14px;
+            border: 1px solid #333;
+            border-radius: 30px;
+            color: #bdbdbd;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 90px);
+            line-height: 0.95;
+            letter-spacing: -5px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #8b5cf6;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            color: #a5a5a5;
+            font-size: 18px;
+        }
+
+        .buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            padding: 13px 22px;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: 0.25s;
+        }
+
+        .primary {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        .primary:hover {
+            transform: translateY(-3px);
+        }
+
+        .secondary {
+            border: 1px solid #333;
+            color: #ffffff;
+        }
+
+        .secondary:hover {
+            background: #151515;
+        }
+
+        /* SECTIONS */
+
+        section {
+            max-width: 1150px;
+            margin: auto;
+            padding: 100px 25px;
+        }
+
+        .section-title {
+            font-size: 42px;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .section-description {
+            color: #929292;
+            max-width: 600px;
+            margin-bottom: 45px;
+        }
+
+        /* SERVICES */
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .service {
+            background: #101010;
+            border: 1px solid #222;
+            border-radius: 15px;
+            padding: 28px;
+            transition: 0.25s;
+        }
+
+        .service:hover {
+            transform: translateY(-5px);
+            border-color: #444;
+        }
+
+        .service-number {
+            color: #8b5cf6;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 35px;
+        }
+
+        .service h3 {
+            margin-bottom: 10px;
+        }
+
+        .service p {
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* ABOUT */
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-box {
+            background: #101010;
+            border: 1px solid #222;
+            border-radius: 18px;
+            padding: 35px;
+        }
+
+        .about-box p {
+            color: #999;
+            margin-top: 15px;
+        }
+
+        /* CTA */
+
+        .cta {
+            text-align: center;
+            background: linear-gradient(
+                135deg,
+                #111111,
+                #17111f
+            );
+            border: 1px solid #292929;
+            border-radius: 25px;
+            padding: 75px 25px;
+        }
+
+        .cta h2 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #999;
+            margin-bottom: 30px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid #222;
+            padding: 30px 25px;
+            text-align: center;
+            color: #666;
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .services {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                letter-spacing: -3px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .services {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 34px;
+            }
+
+            .cta h2 {
+                font-size: 34px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <a href="#" class="logo">Editors<span>Hub</span></a>
+
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <!-- HERO -->
+
+    <div class="hero">
+        <div class="hero-content">
+
+            <div class="badge">CREATIVE EDITING AGENCY</div>
+
+            <h1>
+                We turn ideas<br>
+                into <span>impact.</span>
+            </h1>
+
+            <p>
+                Editors Hub is a creative team focused on video editing,
+                thumbnails, graphics and digital content.
+            </p>
+
+            <div class="buttons">
+                <a href="#services" class="button primary">
+                    Explore Services
+                </a>
+
+                <a href="#contact" class="button secondary">
+                    Work With Us
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- SERVICES -->
+
+    <section id="services">
+
+        <h2 class="section-title">What we do</h2>
+
+        <p class="section-description">
+            From short-form content to complete visual branding,
+            our editors help creators and businesses look better online.
+        </p>
+
+        <div class="services">
+
+            <div class="service">
+                <div class="service-number">01</div>
+                <h3>Video Editing</h3>
+                <p>
+                    Reels, shorts, YouTube videos and cinematic edits
+                    designed to keep viewers watching.
+                </p>
+            </div>
+
+            <div class="service">
+                <div class="service-number">02</div>
+                <h3>Thumbnails</h3>
+                <p>
+                    High-impact YouTube thumbnails designed to
+                    capture attention and improve clicks.
+                </p>
+            </div>
+
+            <div class="service">
+                <div class="service-number">03</div>
+                <h3>Graphics</h3>
+                <p>
+                    Social media posts, banners, promotional graphics
+                    and other digital designs.
+                </p>
+            </div>
+
+            <div class="service">
+                <div class="service-number">04</div>
+                <h3>Branding</h3>
+                <p>
+                    Logos, banners and visual identities for creators,
+                    gaming channels and online brands.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <div class="about">
+
+            <div>
+                <h2 class="section-title">
+                    Built by editors.<br>
+                    Made for creators.
+                </h2>
+
+                <p class="section-description">
+                    Editors Hub brings creative editors together in one
+                    community so clients can find the right talent for
+                    their projects.
+                </p>
+            </div>
+
+            <div class="about-box">
+
+                <h3>Why Editors Hub?</h3>
+
+                <p>
+                    We believe great editing isn't just about effects.
+                    It's about storytelling, pacing, design and knowing
+                    what makes an audience stop scrolling.
+                </p>
+
+                <p>
+                    Our goal is simple: connect talented editors with
+                    creators and businesses that need great content.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT / CTA -->
+
+    <section id="contact">
+
+        <div class="cta">
+
+            <h2>Have a project?</h2>
+
+            <p>
+                Let's create something worth watching.
+            </p>
+
+            <div class="buttons">
+
+                <!-- Replace this link with your Discord invite later -->
+
+                <a href="#" class="button primary">
+                    Join Editors Hub
+                </a>
+
+                <a href="mailto:hello@editorshub.com" class="button secondary">
+                    Contact Us
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    © 2026 Editors Hub. All rights reserved.
+</footer>
+
+</body>
+</html>
