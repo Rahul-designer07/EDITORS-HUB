@@ -3,1300 +3,661 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Editors Hub — Creative Editing Studio</title>
-
-<meta name="description" content="Editors Hub is a creative editing studio and community connecting creators, businesses and talented editors.">
+<meta name="theme-color" content="#f4f7ff">
+<title>Editors Hub — Creative, in Motion.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+:root{
+--blue:#3568f5;
+--light-blue:#82a8ff;
+--navy:#080d2c;
+--ink:#101426;
+--muted:#737d94;
+--white:#fbfcff;
+--glass:rgba(255,255,255,.65);
+--ease:cubic-bezier(.18,.8,.22,1);
 }
-
-html{
-    scroll-behavior:smooth;
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 body{
-    background:#070707;
-    color:#f5f5f5;
-    font-family:Inter,Arial,sans-serif;
-    line-height:1.6;
-    overflow-x:hidden;
+font-family:'DM Sans',sans-serif;
+background:#f5f7fc;
+color:var(--ink);
+overflow-x:hidden;
 }
-
-body:before{
-    content:"";
-    position:fixed;
-    width:500px;
-    height:500px;
-    background:#7047ff;
-    opacity:.06;
-    filter:blur(140px);
-    top:-250px;
-    right:-150px;
-    pointer-events:none;
-    z-index:-1;
+a{text-decoration:none;color:inherit}
+button{font:inherit;cursor:pointer}
+.wrap{width:min(1200px,calc(100% - 42px));margin:auto}
+.eyebrow{
+font-size:10px;font-weight:700;letter-spacing:3px;
+text-transform:uppercase;color:#69738b;
 }
-
-a{
-    color:inherit;
-    text-decoration:none;
-}
-
-button{
-    font:inherit;
-}
-
-.container{
-    width:min(1160px,calc(100% - 40px));
-    margin:auto;
-}
+.eyebrow:before{content:"";display:inline-block;width:22px;height:1px;background:var(--blue);vertical-align:middle;margin-right:10px}
+.blue{color:var(--blue)}
+#progress{position:fixed;top:0;left:0;width:0;height:3px;background:var(--blue);z-index:100}
 
 /* NAVIGATION */
-
-.navbar{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    z-index:1000;
-    background:rgba(7,7,7,.78);
-    backdrop-filter:blur(18px);
-    border-bottom:1px solid rgba(255,255,255,.07);
-}
-
+.nav-shell{position:fixed;top:15px;width:100%;z-index:90}
 .nav{
-    height:76px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+width:min(1160px,calc(100% - 28px));
+margin:auto;padding:11px 16px 11px 20px;
+display:flex;align-items:center;justify-content:space-between;
+border:1px solid #ffffffd9;border-radius:100px;
+background:rgba(255,255,255,.75);
+backdrop-filter:blur(24px) saturate(170%);
+box-shadow:0 14px 45px #1a2c5a0b;
 }
-
-.brand{
-    display:flex;
-    align-items:center;
+.brand{display:flex;align-items:center;gap:10px;font:800 13px Manrope;letter-spacing:2px}
+.brand-mark{
+width:32px;height:32px;border-radius:11px;
+display:grid;place-items:center;color:white;
+background:linear-gradient(145deg,#527fff,#214de0);
+box-shadow:0 5px 14px #3568f54d;
 }
-
-.brand img{
-    width:46px;
-    height:46px;
-    object-fit:contain;
-}
-
-.nav-links{
-    display:flex;
-    align-items:center;
-    gap:32px;
-    list-style:none;
-    color:#9c9c9c;
-    font-size:14px;
-}
-
-.nav-links a{
-    transition:.25s;
-}
-
-.nav-links a:hover{
-    color:white;
-}
-
+.navlinks{display:flex;gap:28px;font-size:12px;color:#58637b}
+.navlinks a:hover{color:var(--blue)}
 .nav-cta{
-    padding:11px 18px;
-    border:1px solid #303030;
-    border-radius:8px;
-    font-size:13px;
-    font-weight:600;
-    transition:.25s;
+background:var(--navy);color:white;border:0;
+padding:13px 20px;border-radius:100px;
+font-size:11px;font-weight:700;transition:.3s;
 }
-
-.nav-cta:hover{
-    background:#fff;
-    color:#000;
-}
+.nav-cta:hover{background:var(--blue);transform:translateY(-2px)}
+.menu{display:none;background:none;border:0;font-size:24px}
 
 /* HERO */
-
 .hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    padding:150px 0 100px;
-    position:relative;
+min-height:100svh;padding:150px 0 70px;
+display:flex;align-items:center;position:relative;
+overflow:hidden;
+background:
+radial-gradient(ellipse at 82% 54%,#d8eaff,transparent 38%),
+radial-gradient(ellipse at 13% 20%,#eeedff,transparent 42%),
+linear-gradient(120deg,#fbfbff,#f1f5ff 65%,#e9f4ff);
 }
-
+.hero:before{
+content:"";position:absolute;inset:-20%;opacity:.3;
+background:repeating-linear-gradient(53deg,transparent 0 190px,#fff 192px 211px,transparent 214px 270px);
+transform:rotate(-8deg);pointer-events:none;
+}
 .hero-grid{
-    display:grid;
-    grid-template-columns:1.15fr .85fr;
-    gap:70px;
-    align-items:center;
+position:relative;z-index:2;
+display:grid;grid-template-columns:1.05fr .95fr;
+align-items:center;gap:20px;
 }
-
-.eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:9px;
-    color:#a6a6a6;
-    font-size:12px;
-    font-weight:600;
-    letter-spacing:1.8px;
-    text-transform:uppercase;
-    margin-bottom:25px;
-}
-
-.dot{
-    width:7px;
-    height:7px;
-    background:#8b6cff;
-    border-radius:50%;
-    box-shadow:0 0 15px #8b6cff;
-}
-
 .hero h1{
-    font-family:"Space Grotesk",sans-serif;
-    font-size:clamp(58px,8vw,105px);
-    line-height:.92;
-    letter-spacing:-6px;
-    max-width:850px;
+font:800 clamp(58px,7.4vw,105px)/.98 Manrope;
+letter-spacing:-.075em;margin:26px 0 22px;
 }
-
-.hero h1 span{
-    color:#8b6cff;
+.hero h1 span{display:block;overflow:hidden;padding-bottom:.07em}
+.hero h1 b{display:inline-block;animation:headline .9s var(--ease) both}
+.hero h1 span:nth-child(2) b{animation-delay:.13s}
+.hero h1 span:nth-child(3) b{animation-delay:.26s}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.hero-sub{max-width:480px;color:#64708a;font-size:16px;line-height:1.8}
+.hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
+.primary,.secondary{
+display:inline-flex;align-items:center;gap:12px;
+padding:16px 21px;border-radius:9px;
+font-size:12px;font-weight:700;transition:.3s;
 }
-
-.hero-copy{
-    color:#969696;
-    max-width:570px;
-    font-size:17px;
-    margin-top:28px;
+.primary{
+background:linear-gradient(115deg,#4d7cff,#2858ed);
+color:white;box-shadow:0 12px 26px #3568f53b;
 }
+.primary:hover{transform:translateY(-4px);box-shadow:0 18px 34px #3568f54d}
+.secondary{border:1px solid #dce3f2;background:#ffffff88;color:#28334b}
+.hero-meta{display:flex;gap:20px;flex-wrap:wrap;margin-top:48px;color:#8b94a8;font-size:9px;letter-spacing:2px;font-weight:700}
 
-.hero-actions{
-    display:flex;
-    gap:13px;
-    flex-wrap:wrap;
-    margin-top:35px;
+/* LIQUID GLASS OBJECT */
+.visual-stage{height:550px;position:relative;display:grid;place-items:center;perspective:1100px}
+.orb-glow{
+position:absolute;width:470px;height:470px;border-radius:50%;
+background:radial-gradient(circle,#9fc5ff9c,#b9d1ff4f 38%,transparent 70%);
+filter:blur(22px);animation:breathe 7s ease-in-out infinite alternate;
 }
-
-.btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    min-height:48px;
-    padding:0 21px;
-    border-radius:8px;
-    font-size:14px;
-    font-weight:700;
-    transition:.3s;
+.glass-orb{
+position:relative;width:min(390px,75vw);aspect-ratio:1;
+border-radius:43% 57% 55% 45% / 48% 42% 58% 52%;
+background:radial-gradient(ellipse at 29% 23%,#fff 0 3%,#c5e2ff 5%,#5b9aff 13%,#103b9d 26%,#07183f 43%,#1e5ed3 54%,#a8d6ff 65%,#1644a0 73%,#071a4d 86%,#d9efff 95%);
+box-shadow:inset -25px -25px 48px #020b2cbd,inset 17px 14px 28px #ffffffb8,0 50px 90px #244c9a3d;
+transform:rotate(-18deg);animation:orbfloat 9s ease-in-out infinite;
 }
-
-.btn-primary{
-    background:#f5f5f5;
-    color:#050505;
+.glass-orb:before{
+content:"";position:absolute;inset:8%;border-radius:inherit;
+border:2px solid #ffffffa8;transform:rotate(24deg) scale(.92);
+box-shadow:inset 0 0 22px #ffffff8c,0 0 18px #b7d9ff9c;
 }
-
-.btn-primary:hover{
-    transform:translateY(-3px);
-    box-shadow:0 12px 30px rgba(255,255,255,.12);
+.glass-orb:after{
+content:"";position:absolute;inset:20% 10% 15% 24%;
+border-radius:48% 52% 61% 39%;
+border:15px solid #b9e3ff9c;border-left-color:#071b52;
+border-bottom-color:#184cbb;transform:rotate(40deg);
+filter:drop-shadow(8px 10px 10px #071b5270);
 }
-
-.btn-outline{
-    border:1px solid #303030;
-    color:#eee;
+.orb-core{
+position:absolute;width:42%;height:42%;left:29%;top:29%;
+border-radius:50%;
+background:radial-gradient(circle at 35% 25%,#fff,#8ecbff 13%,#123e9d 36%,#061332 68%,#5daaff);
+box-shadow:inset -12px -12px 20px #020a2b,0 0 30px #b5d9ff9c;
 }
-
-.btn-outline:hover{
-    border-color:#666;
-    background:#151515;
-    transform:translateY(-3px);
+.orbit{
+position:absolute;width:490px;height:200px;border:1px solid #ffffffd9;
+border-radius:50%;transform:rotate(-24deg);
+box-shadow:0 0 20px #8bb7ff55,inset 0 0 15px #ffffffa8;
+animation:orbit 16s linear infinite;
 }
-
-.hero-card{
-    position:relative;
-    min-height:420px;
-    border:1px solid #242424;
-    border-radius:24px;
-    background:
-        radial-gradient(circle at 75% 20%,rgba(139,108,255,.23),transparent 32%),
-        linear-gradient(145deg,#111,#090909);
-    overflow:hidden;
-    display:flex;
-    align-items:flex-end;
-    padding:30px;
+.orbit.two{width:540px;height:250px;transform:rotate(48deg);border-color:#9bbdff99;animation-direction:reverse}
+.float-glass{
+position:absolute;z-index:4;
+backdrop-filter:blur(22px) saturate(160%);
+background:linear-gradient(135deg,#ffffffc9,#ffffff3d);
+border:1px solid #ffffffed;
+box-shadow:0 18px 40px #193d8c1c,inset 0 1px 0 #fff;
+border-radius:17px;padding:13px 16px;
+display:flex;align-items:center;gap:11px;
+animation:float 6s ease-in-out infinite;
 }
+.float-glass strong{font:700 11px Manrope}
+.float-glass small{display:block;color:#7c88a1;font-size:9px;margin-top:3px}
+.float-icon{width:30px;height:30px;border-radius:10px;background:#e8efff;color:var(--blue);display:grid;place-items:center}
+.fg-one{left:0;top:20%}
+.fg-two{right:0;bottom:20%;animation-delay:-3s}
 
-.hero-card:before{
-    content:"EH";
-    position:absolute;
-    font-family:"Space Grotesk";
-    font-size:190px;
-    font-weight:700;
-    color:rgba(255,255,255,.025);
-    right:-20px;
-    top:40px;
-    letter-spacing:-15px;
+/* MOTION */
+@keyframes headline{from{transform:translateY(110%);opacity:0}to{transform:none;opacity:1}}
+@keyframes orbfloat{0%,100%{transform:translateY(0) rotate(-18deg)}50%{transform:translateY(-19px) rotate(-8deg)}}
+@keyframes float{0%,100%{translate:0 0}50%{translate:0 -13px}}
+@keyframes orbit{to{rotate:360deg}}
+@keyframes breathe{to{transform:scale(1.16);opacity:.7}}
+
+/* MARQUEE */
+.ticker{background:#0b1232;color:white;overflow:hidden;padding:17px 0}
+.ticker-track{
+display:flex;gap:35px;white-space:nowrap;width:max-content;
+animation:marquee 32s linear infinite;
+font:700 10px Manrope;letter-spacing:3px;
 }
+.ticker-track span{color:#9dbbff}
+@keyframes marquee{to{transform:translateX(-50%)}}
 
-.card-content{
-    position:relative;
-    z-index:2;
-}
-
-.card-label{
-    color:#858585;
-    font-size:11px;
-    letter-spacing:1.5px;
-    text-transform:uppercase;
-}
-
-.card-content h3{
-    font-family:"Space Grotesk";
-    font-size:30px;
-    margin-top:8px;
-}
-
-.card-line{
-    width:55px;
-    height:2px;
-    background:#8b6cff;
-    margin-top:20px;
-}
-
-/* SECTIONS */
-
-section{
-    padding:115px 0;
-}
-
+/* GENERAL SECTIONS */
+.section{padding:115px 0}
 .section-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:end;
-    gap:30px;
-    margin-bottom:48px;
+display:flex;justify-content:space-between;align-items:end;
+gap:25px;margin-bottom:45px;
 }
-
-.section-kicker{
-    color:#8b6cff;
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    margin-bottom:12px;
+.section-head h2{
+font:800 clamp(40px,6vw,76px)/1.02 Manrope;
+letter-spacing:-.07em;margin-top:17px;
 }
-
-.section-title{
-    font-family:"Space Grotesk";
-    font-size:clamp(36px,5vw,58px);
-    line-height:1;
-    letter-spacing:-2.5px;
-}
-
-.section-description{
-    color:#818181;
-    max-width:470px;
-    font-size:14px;
-}
+.section-head p{max-width:350px;color:#768198;line-height:1.75;font-size:13px}
 
 /* SERVICES */
-
-.services-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:14px;
+.services{background:linear-gradient(180deg,#f6f8fd,#edf3ff);position:relative;overflow:hidden}
+.services:before{
+content:"";position:absolute;width:650px;height:650px;border-radius:50%;
+background:radial-gradient(circle,#d8e6ff,transparent 70%);
+right:-320px;top:0;
 }
-
-.service{
-    min-height:270px;
-    padding:27px;
-    background:#0d0d0d;
-    border:1px solid #202020;
-    border-radius:16px;
-    transition:.3s;
+.services .wrap{position:relative}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.service-card{
+min-height:330px;border:1px solid white;
+background:linear-gradient(145deg,#ffffffd9,#ffffff9c);
+backdrop-filter:blur(22px);border-radius:27px;padding:27px;
+box-shadow:0 18px 50px #243d7810;
+position:relative;overflow:hidden;transition:.45s var(--ease);
+cursor:pointer;
 }
-
-.service:hover{
-    transform:translateY(-6px);
-    border-color:#383838;
-    background:#111;
-}
-
-.service-number{
-    font-family:"Space Grotesk";
-    color:#696969;
-    font-size:12px;
-}
-
+.service-card:hover{transform:translateY(-9px);box-shadow:0 25px 55px #243d7820}
+.service-card.active{background:linear-gradient(145deg,#4d7eff,#2858eb);color:white}
 .service-icon{
-    margin-top:45px;
-    font-size:25px;
-    color:#8b6cff;
+width:60px;height:60px;border-radius:18px;background:#edf1ff;
+color:#4775f5;display:grid;place-items:center;font-size:25px;
 }
+.service-number{position:absolute;right:26px;top:32px;font:700 10px Manrope;color:#9ca7bc}
+.service-card h3{font:700 24px Manrope;margin:57px 0 11px}
+.service-card p{color:#7a8498;font-size:12px;line-height:1.75}
+.service-card.active p{color:#e4ecff}
+.service-card.active .service-icon{background:white}
+.service-card.active .service-number{color:#dce7ff}
 
-.service h3{
-    font-family:"Space Grotesk";
-    font-size:21px;
-    margin-top:17px;
+/* MANIFESTO */
+.manifesto{background:white}
+.manifesto-grid{display:grid;grid-template-columns:1fr .8fr;gap:70px;align-items:center}
+.manifesto h2{font:800 clamp(44px,6vw,78px)/1.03 Manrope;letter-spacing:-.07em;margin:20px 0}
+.manifesto h2 span{color:var(--blue)}
+.manifesto p{color:#758097;line-height:1.9;font-size:14px}
+.glass-note{
+padding:35px;border:1px solid white;border-radius:28px;
+background:linear-gradient(145deg,#ffffffd9,#eaf1ffb8);
+backdrop-filter:blur(20px);box-shadow:0 25px 70px #243d7812;
 }
+.glass-note strong{font:800 42px Manrope;color:var(--blue)}
+.glass-note p{font-size:12px;margin-top:12px}
 
-.service p{
-    color:#777;
-    font-size:13px;
-    margin-top:8px;
+/* SHOWREEL */
+.showreel{background:#080d24;color:white;overflow:hidden}
+.showreel .section-head p,.showreel .eyebrow{color:#a7b1ca}
+.reel-box{
+height:460px;border-radius:28px;border:1px solid #ffffff24;
+position:relative;overflow:hidden;
+background:radial-gradient(circle at 68% 48%,#2866d8,#101e50 34%,#080d24 75%);
+display:grid;place-items:center;cursor:pointer;
 }
-
-/* WORK */
-
-.work-grid{
-    display:grid;
-    grid-template-columns:1.35fr .65fr;
-    gap:14px;
+.reel-object{
+width:240px;height:240px;border-radius:40% 60% 58% 42%;
+background:radial-gradient(circle at 30% 20%,#fff,#91c8ff 7%,#2468df 22%,#061338 53%,#3c8cff 70%,#061338 90%);
+box-shadow:inset -20px -20px 35px #02071e,inset 15px 15px 20px #ffffffb5,0 30px 80px #357cff66;
+transform:rotate(25deg);animation:orbfloat 8s ease-in-out infinite;
 }
-
-.work-card{
-    min-height:350px;
-    border:1px solid #202020;
-    border-radius:18px;
-    background:#101010;
-    position:relative;
-    overflow:hidden;
-    display:flex;
-    align-items:flex-end;
-    transition:.3s;
+.reel-title{
+position:absolute;left:7%;top:50%;transform:translateY(-50%);
+font:800 clamp(45px,8vw,100px)/.9 Manrope;letter-spacing:-.08em;
 }
-
-.work-card:hover{
-    transform:translateY(-5px);
-    border-color:#3b3b3b;
-}
-
-.work-card.large{
-    min-height:520px;
-}
-
-.work-visual{
-    position:absolute;
-    inset:0;
-    background:
-        radial-gradient(circle at 70% 25%,rgba(139,108,255,.25),transparent 28%),
-        linear-gradient(135deg,#171717,#090909);
-}
-
-.work-visual.two{
-    background:
-        radial-gradient(circle at 25% 35%,rgba(255,255,255,.08),transparent 25%),
-        linear-gradient(145deg,#141414,#080808);
-}
-
-.work-visual.three{
-    background:
-        radial-gradient(circle at 70% 70%,rgba(139,108,255,.17),transparent 25%),
-        linear-gradient(135deg,#121212,#080808);
-}
-
-.work-number{
-    position:absolute;
-    top:28px;
-    left:28px;
-    font-family:"Space Grotesk";
-    font-size:70px;
-    color:rgba(255,255,255,.045);
-}
-
-.work-info{
-    position:relative;
-    z-index:2;
-    width:100%;
-    padding:28px;
-    background:linear-gradient(transparent,rgba(0,0,0,.92));
-    padding-top:100px;
-}
-
-.work-info span{
-    color:#8b6cff;
-    font-size:11px;
-    text-transform:uppercase;
-    letter-spacing:1.5px;
-}
-
-.work-info h3{
-    font-family:"Space Grotesk";
-    font-size:25px;
-    margin-top:5px;
-}
-
-.work-info p{
-    color:#858585;
-    font-size:13px;
-}
-
-/* COMMUNITY */
-
-.community{
-    border-top:1px solid #1c1c1c;
-    border-bottom:1px solid #1c1c1c;
-}
-
-.community-box{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:60px;
-    align-items:center;
-}
-
-.community-copy p{
-    color:#858585;
-    font-size:15px;
-    max-width:540px;
-    margin-top:25px;
-}
-
-.community-list{
-    margin-top:28px;
-    display:grid;
-    gap:13px;
-}
-
-.community-item{
-    display:flex;
-    gap:13px;
-    align-items:center;
-    color:#aaa;
-    font-size:14px;
-}
-
-.check{
-    width:23px;
-    height:23px;
-    border:1px solid #343434;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#8b6cff;
-    font-size:11px;
-}
-
-.community-panel{
-    padding:38px;
-    border:1px solid #262626;
-    border-radius:20px;
-    background:
-        radial-gradient(circle at 80% 10%,rgba(139,108,255,.16),transparent 30%),
-        #0d0d0d;
-}
-
-.community-panel .small{
-    color:#777;
-    font-size:11px;
-    letter-spacing:1.5px;
-    text-transform:uppercase;
-}
-
-.community-panel h3{
-    font-family:"Space Grotesk";
-    font-size:32px;
-    margin-top:10px;
-}
-
-.community-panel p{
-    color:#777;
-    font-size:13px;
-    margin:12px 0 25px;
+.reel-title span{color:#8eb4ff}
+.reel-play{
+position:absolute;right:30px;bottom:27px;width:58px;height:58px;
+border:1px solid #ffffff70;border-radius:50%;
+background:#ffffff18;color:white;backdrop-filter:blur(12px);
+font-size:18px;
 }
 
 /* PROCESS */
-
-.process-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    border-top:1px solid #252525;
+.process{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.process-item{border-top:1px solid #dce2ed;padding-top:22px;position:relative}
+.process-item:before{
+content:"";position:absolute;width:8px;height:8px;border-radius:50%;
+background:var(--blue);top:-4px;left:0;
+box-shadow:0 0 0 5px #e9efff;
 }
+.process-item small{font:700 9px Manrope;color:var(--blue);letter-spacing:1px}
+.process-item h3{font:700 20px Manrope;margin:17px 0 8px}
+.process-item p{font-size:11px;line-height:1.7;color:#7a8498}
 
-.process{
-    padding:30px 25px 10px 0;
-    border-right:1px solid #252525;
+/* CREATOR NETWORK */
+.network{background:linear-gradient(130deg,#eef3ff,#f8faff)}
+.network-board{
+height:420px;border:1px solid white;
+background:linear-gradient(145deg,#ffffffb8,#eaf1ffad);
+backdrop-filter:blur(20px);border-radius:28px;
+position:relative;overflow:hidden;
+box-shadow:0 20px 60px #213d7810;
 }
-
-.process:not(:first-child){
-    padding-left:25px;
+.network-board svg{position:absolute;inset:0;width:100%;height:100%}
+.network-node{
+position:absolute;transform:translate(-50%,-50%);
+border:1px solid white;background:#ffffffbd;
+backdrop-filter:blur(12px);box-shadow:0 10px 25px #1b3d8214;
+border-radius:50%;width:78px;height:78px;
+color:#4269cb;font:700 9px Manrope;transition:.3s;
 }
-
-.process:last-child{
-    border-right:none;
+.network-node:hover,.network-node.selected{
+background:var(--blue);color:white;
+transform:translate(-50%,-50%) scale(1.12);
 }
-
-.process span{
-    color:#8b6cff;
-    font-size:12px;
-    font-weight:700;
+.network-node.core{
+width:112px;height:112px;border-radius:34px;
+background:linear-gradient(145deg,#477aff,#1e4dd9);
+color:white;font:800 16px Manrope;
 }
-
-.process h3{
-    font-family:"Space Grotesk";
-    font-size:21px;
-    margin-top:20px;
+.network-info{
+position:absolute;left:18px;bottom:18px;
+padding:13px 17px;border-radius:14px;
+background:#ffffffdf;backdrop-filter:blur(15px);
+border:1px solid white;max-width:270px;
+color:#78839a;font-size:10px;line-height:1.5;
 }
+.network-info b{display:block;color:#17203a;margin-bottom:3px}
 
-.process p{
-    color:#777;
-    font-size:13px;
-    margin-top:8px;
-}
-
-/* ABOUT */
-
-.about-grid{
-    display:grid;
-    grid-template-columns:.8fr 1.2fr;
-    gap:70px;
-}
-
-.about-text p{
-    color:#858585;
-    font-size:15px;
-    margin-top:25px;
-}
-
-.about-stats{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-}
-
-.stat{
-    padding:30px;
-    border:1px solid #222;
-    border-radius:15px;
-    background:#0d0d0d;
-}
-
-.stat strong{
-    display:block;
-    font-family:"Space Grotesk";
-    font-size:36px;
-}
-
-.stat span{
-    color:#777;
-    font-size:12px;
-}
-
-/* CTA */
-
-.cta{
-    padding:90px 30px;
-    text-align:center;
-    border:1px solid #292929;
-    border-radius:25px;
-    background:
-        radial-gradient(circle at 50% 0%,rgba(139,108,255,.18),transparent 35%),
-        #0d0d0d;
-}
-
-.cta .section-title{
-    max-width:700px;
-    margin:auto;
-}
-
-.cta p{
-    color:#7f7f7f;
-    max-width:520px;
-    margin:20px auto 30px;
-    font-size:14px;
-}
-
-/* FOOTER */
-
-footer{
-    border-top:1px solid #1d1d1d;
-    padding:45px 0;
-}
-
-.footer-top{
-    display:flex;
-    justify-content:space-between;
-    gap:30px;
-    align-items:center;
-}
-
-.footer-brand{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    font-family:"Space Grotesk";
-    font-weight:700;
-}
-
-.footer-brand img{
-    width:38px;
-    height:38px;
-    object-fit:contain;
-}
-
-.footer-links{
-    display:flex;
-    gap:25px;
-    color:#777;
-    font-size:12px;
-}
-
-.footer-links a:hover{
-    color:white;
-}
-
-.copyright{
-    color:#555;
-    font-size:11px;
-    margin-top:35px;
-}
-
-/* ANIMATION */
-
-.reveal{
-    animation:fadeUp .8s ease both;
-}
-
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(18px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
+/* CTA + FOOTER */
+.cta{background:#0b1232;color:white;padding:100px 0}
+.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:30px}
+.cta h2{font:800 clamp(45px,7vw,85px)/.95 Manrope;letter-spacing:-.075em;margin:18px 0}
+.cta p{color:#aab7d4;font-size:13px;line-height:1.7;max-width:420px}
+footer{padding:65px 0 22px;background:#070b1e;color:white}
+.footer-top{display:flex;justify-content:space-between;gap:30px;align-items:start;padding-bottom:45px}
+.footer-brand{font:800 clamp(40px,8vw,100px) Manrope;letter-spacing:-.09em}
+.footer-brand span{color:#6f98ff}
+.footer-links{display:flex;gap:25px;flex-wrap:wrap;font-size:11px;color:#aab4ca}
+.footer-bottom{border-top:1px solid #ffffff1e;padding-top:17px;display:flex;justify-content:space-between;gap:15px;color:#7886a5;font:9px Manrope;letter-spacing:1px}
 
 /* MOBILE */
-
-@media(max-width:900px){
-
-    .nav-links{
-        display:none;
-    }
-
-    .hero-grid{
-        grid-template-columns:1fr;
-    }
-
-    .hero-card{
-        min-height:300px;
-    }
-
-    .services-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .community-box,
-    .about-grid{
-        grid-template-columns:1fr;
-    }
-
-    .work-grid{
-        grid-template-columns:1fr;
-    }
-
-    .process-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .process{
-        border-bottom:1px solid #252525;
-        border-right:none;
-    }
-
-    .process:nth-child(odd){
-        padding-left:0;
-        padding-right:25px;
-        border-right:1px solid #252525;
-    }
-
-    .process:nth-child(even){
-        padding-left:25px;
-    }
+@media(max-width:850px){
+.hero-grid{grid-template-columns:1fr .8fr}
+.visual-stage{height:440px}
+.glass-orb{width:300px}
+.orbit{width:390px}
+.orbit.two{width:430px}
+.service-card{padding:22px}
+.process{grid-template-columns:repeat(3,1fr);row-gap:28px}
 }
-
-@media(max-width:600px){
-
-    .container{
-        width:min(100% - 28px,1160px);
-    }
-
-    .nav{
-        height:68px;
-    }
-
-    .brand img{
-        width:40px;
-        height:40px;
-    }
-
-    .nav-cta{
-        padding:9px 13px;
-        font-size:11px;
-    }
-
-    .hero{
-        padding:125px 0 70px;
-    }
-
-    .hero h1{
-        font-size:55px;
-        letter-spacing:-4px;
-    }
-
-    .hero-copy{
-        font-size:15px;
-    }
-
-    section{
-        padding:80px 0;
-    }
-
-    .section-head{
-        display:block;
-    }
-
-    .section-description{
-        margin-top:20px;
-    }
-
-    .services-grid{
-        grid-template-columns:1fr;
-    }
-
-    .service{
-        min-height:220px;
-    }
-
-    .service-icon{
-        margin-top:30px;
-    }
-
-    .work-card,
-    .work-card.large{
-        min-height:330px;
-    }
-
-    .community-panel{
-        padding:27px;
-    }
-
-    .process-grid{
-        grid-template-columns:1fr;
-    }
-
-    .process,
-    .process:nth-child(odd),
-    .process:nth-child(even){
-        padding:25px 0;
-        border-right:none;
-    }
-
-    .about-stats{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .stat{
-        padding:22px;
-    }
-
-    .stat strong{
-        font-size:29px;
-    }
-
-    .footer-top{
-        align-items:flex-start;
-        flex-direction:column;
-    }
-
-    .footer-links{
-        flex-wrap:wrap;
-    }
+@media(max-width:640px){
+.wrap{width:calc(100% - 34px)}
+.nav-shell{top:8px}
+.nav{width:calc(100% - 16px);padding:9px 12px}
+.navlinks,.nav-cta{display:none}
+.menu{display:block}
+.nav.open{border-radius:20px}
+.nav.open .navlinks{
+display:flex;position:absolute;top:57px;left:0;right:0;
+flex-direction:column;padding:20px;background:#ffffffed;
+backdrop-filter:blur(20px);border:1px solid white;
+border-radius:18px;gap:20px;font-size:15px;
+}
+.hero{padding:125px 0 45px;min-height:900px;align-items:flex-start}
+.hero-grid{display:flex;flex-direction:column;align-items:stretch}
+.hero-copy{padding:15px 0 0}
+.hero h1{font-size:clamp(52px,12vw,76px);margin:22px 0 17px}
+.hero-sub{font-size:14px}
+.hero-meta{margin-top:27px;font-size:8px}
+.visual-stage{height:340px;margin-top:3px}
+.glass-orb{width:250px}
+.orb-glow{width:330px;height:330px}
+.orbit{width:330px;height:140px}
+.orbit.two{width:360px;height:180px}
+.fg-one{left:0;top:13%}
+.fg-two{right:0;bottom:12%}
+.float-glass{padding:10px 12px}
+.section{padding:82px 0}
+.section-head{display:block;margin-bottom:30px}
+.section-head h2{font-size:clamp(40px,10vw,59px)}
+.section-head p{margin-top:16px}
+.service-grid{grid-template-columns:1fr;gap:12px}
+.service-card{min-height:270px;padding:23px}
+.service-card h3{margin-top:35px}
+.manifesto-grid{grid-template-columns:1fr;gap:28px}
+.reel-box{height:350px}
+.reel-object{width:185px;height:185px;margin-left:70px}
+.reel-title{left:6%;font-size:54px}
+.process{grid-template-columns:1fr 1fr;gap:25px 14px}
+.network-board{height:360px}
+.network-node{width:58px;height:58px;font-size:7px}
+.network-node.core{width:84px;height:84px;font-size:13px}
+.network-info{left:10px;bottom:10px;max-width:220px;font-size:9px}
+.cta-inner{display:block}
+.cta h2{font-size:55px}
+.cta .primary{margin-top:15px}
+.footer-top{display:block}
+.footer-brand{margin-bottom:28px}
+.footer-bottom{flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){
+*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
 }
 </style>
 </head>
 
 <body>
+<div id="progress"></div>
 
-<!-- NAVIGATION -->
+<div class="nav-shell">
+<nav class="nav" id="nav">
+<a class="brand" href="#top">
+<span class="brand-mark">EH</span> EDITORS HUB
+</a>
+<div class="navlinks">
+<a href="#services">Services</a>
+<a href="#work">Our work</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</div>
+<a class="nav-cta" href="#contact">LET'S TALK ↗</a>
+<button class="menu" id="menu" aria-label="Open menu">☰</button>
+</nav>
+</div>
 
-<header class="navbar">
-    <div class="container nav">
-
-        <a href="#" class="brand">
-            <img src="file_00000000a0bc820bab5b7a810ce500e4.png" alt="Editors Hub">
-        </a>
-
-        <ul class="nav-links">
-            <li><a href="#work">Work</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#community">Community</a></li>
-            <li><a href="#about">About</a></li>
-        </ul>
-
-        <a href="#contact" class="nav-cta">Start a Project</a>
-
-    </div>
-</header>
-
-
-<main>
-
-<!-- HERO -->
-
+<main id="top">
 <section class="hero">
-    <div class="container hero-grid">
+<div class="wrap hero-grid">
+<div class="hero-copy">
+<div class="eyebrow">INDEPENDENT CREATIVE AGENCY · EST. 2025</div>
+<h1>
+<span><b>MAKE IT</b></span>
+<span><b><em>MOVE.</em></b></span>
+<span><b>MAKE IT MATTER.</b></span>
+</h1>
+<p class="hero-sub">
+We bring video, design and creator campaigns together to turn good ideas into work people actually notice.
+</p>
+<div class="hero-actions">
+<a class="primary" href="#contact">START A PROJECT ↗</a>
+<a class="secondary" href="#services">Explore what we do ↓</a>
+</div>
+<div class="hero-meta">
+<span>VIDEO · DESIGN · INFLUENCE</span>
+<span>CREATIVE, IN MOTION.</span>
+</div>
+</div>
 
-        <div class="reveal">
-
-            <div class="eyebrow">
-                <span class="dot"></span>
-                Creative Editing Studio
-            </div>
-
-            <h1>
-                Your Vision.<br>
-                <span>Our Edit.</span>
-            </h1>
-
-            <p class="hero-copy">
-                Editors Hub connects creators and businesses with
-                talented editors who turn raw ideas into content
-                people remember.
-            </p>
-
-            <div class="hero-actions">
-                <a href="#contact" class="btn btn-primary">
-                    Hire an Editor
-                </a>
-
-                <a href="#community" class="btn btn-outline">
-                    Join the Community
-                </a>
-            </div>
-
-        </div>
-
-        <div class="hero-card reveal">
-
-            <div class="card-content">
-
-                <div class="card-label">
-                    Editors Hub / 2026
-                </div>
-
-                <h3>
-                    Built for creators.<br>
-                    Driven by editors.
-                </h3>
-
-                <div class="card-line"></div>
-
-            </div>
-
-        </div>
-
-    </div>
+<div class="visual-stage" id="visualStage">
+<div class="orb-glow"></div>
+<div class="orbit"></div>
+<div class="orbit two"></div>
+<div class="glass-orb"><div class="orb-core"></div></div>
+<div class="float-glass fg-one">
+<div class="float-icon">✦</div>
+<div><strong>Creative studio</strong><small>Ideas into impact</small></div>
+</div>
+<div class="float-glass fg-two">
+<div class="float-icon">↗</div>
+<div><strong>Built to move</strong><small>Video · Design · Influence</small></div>
+</div>
+</div>
+</div>
 </section>
 
+<div class="ticker">
+<div class="ticker-track">
+<span>VIDEO EDITING</span> ✳ <span>GRAPHIC DESIGN</span> ✳
+<span>INFLUENCER MARKETING</span> ✳ <span>CREATIVE STRATEGY</span> ✳
+<span>VIDEO EDITING</span> ✳ <span>GRAPHIC DESIGN</span> ✳
+<span>INFLUENCER MARKETING</span> ✳ <span>CREATIVE STRATEGY</span> ✳
+</div>
+</div>
 
-<!-- WORK -->
+<section class="section services" id="services">
+<div class="wrap">
+<div class="section-head">
+<div><div class="eyebrow">01 / WHAT WE OFFER</div>
+<h2>Services built<br>around <span class="blue">ideas.</span></h2></div>
+<p>Three creative disciplines. One connected team. Everything designed to help brands communicate and grow.</p>
+</div>
 
-<section id="work">
-
-    <div class="container">
-
-        <div class="section-head">
-
-            <div>
-                <div class="section-kicker">Selected Work</div>
-                <h2 class="section-title">Made to be noticed.</h2>
-            </div>
-
-            <p class="section-description">
-                A selection of the visual work we create for creators,
-                channels, brands and digital businesses.
-            </p>
-
-        </div>
-
-
-        <div class="work-grid">
-
-            <div class="work-card large">
-                <div class="work-visual"></div>
-                <div class="work-number">01</div>
-
-                <div class="work-info">
-                    <span>Video Editing</span>
-                    <h3>Short-form Content</h3>
-                    <p>Fast pacing, clean storytelling and modern visual direction.</p>
-                </div>
-            </div>
-
-
-            <div>
-
-                <div class="work-card">
-                    <div class="work-visual two"></div>
-                    <div class="work-number">02</div>
-
-                    <div class="work-info">
-                        <span>Design</span>
-                        <h3>YouTube Thumbnails</h3>
-                        <p>Visuals designed to earn attention.</p>
-                    </div>
-                </div>
-
-                <br>
-
-                <div class="work-card">
-                    <div class="work-visual three"></div>
-                    <div class="work-number">03</div>
-
-                    <div class="work-info">
-                        <span>Branding</span>
-                        <h3>Digital Identity</h3>
-                        <p>Graphics that make a brand recognizable.</p>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
+<div class="service-grid">
+<article class="service-card active">
+<span class="service-number">01 / VIDEO</span>
+<div class="service-icon">◉</div>
+<h3>Video editing</h3>
+<p>Make every second count with powerful short-form, long-form and promotional video content.</p>
+</article>
+<article class="service-card">
+<span class="service-number">02 / DESIGN</span>
+<div class="service-icon">✎</div>
+<h3>Graphic design</h3>
+<p>Build a recognisable visual language through thumbnails, social creatives and brand identity.</p>
+</article>
+<article class="service-card">
+<span class="service-number">03 / INFLUENCE</span>
+<div class="service-icon">⌘</div>
+<h3>Influencer marketing</h3>
+<p>Connect brands with the right creators and turn campaigns into meaningful audience connections.</p>
+</article>
+</div>
+</div>
 </section>
 
-
-<!-- SERVICES -->
-
-<section id="services">
-
-    <div class="container">
-
-        <div class="section-head">
-
-            <div>
-                <div class="section-kicker">Capabilities</div>
-                <h2 class="section-title">What we do.</h2>
-            </div>
-
-            <p class="section-description">
-                From the first cut to the final pixel, our creative
-                services are built around digital content.
-            </p>
-
-        </div>
-
-
-        <div class="services-grid">
-
-            <div class="service">
-                <div class="service-number">01 / VIDEO</div>
-                <div class="service-icon">◈</div>
-                <h3>Video Editing</h3>
-                <p>
-                    Reels, Shorts, YouTube videos, cinematic edits
-                    and social content.
-                </p>
-            </div>
-
-            <div class="service">
-                <div class="service-number">02 / DESIGN</div>
-                <div class="service-icon">◇</div>
-                <h3>Thumbnails</h3>
-                <p>
-                    High-impact YouTube thumbnails designed around
-                    clarity, curiosity and clicks.
-                </p>
-            </div>
-
-            <div class="service">
-                <div class="service-number">03 / GRAPHICS</div>
-                <div class="service-icon">✦</div>
-                <h3>Social Graphics</h3>
-                <p>
-                    Posts, promotional artwork, banners and digital
-                    campaign graphics.
-                </p>
-            </div>
-
-            <div class="service">
-                <div class="service-number">04 / BRANDING</div>
-                <div class="service-icon">○</div>
-                <h3>Brand Identity</h3>
-                <p>
-                    Logos, channel identity and visual systems for
-                    creators and online brands.
-                </p>
-            </div>
-
-        </div>
-
-    </div>
+<section class="section manifesto" id="about">
+<div class="wrap manifesto-grid">
+<div>
+<div class="eyebrow">02 / OUR POINT OF VIEW</div>
+<h2>Not more content.<br><span>More meaning.</span></h2>
+<p>We believe creative work should do more than look good. It should communicate clearly, connect with people and make a lasting impression. Editors Hub brings specialists together to make that happen.</p>
+</div>
+<div class="glass-note">
+<strong>01 → ∞</strong>
+<p>One clear idea can become a complete creative experience when the right people, skills and strategy come together.</p>
+</div>
+</div>
 </section>
 
-
-<!-- COMMUNITY -->
-
-<section id="community" class="community">
-
-    <div class="container community-box">
-
-        <div class="community-copy">
-
-            <div class="section-kicker">The Community</div>
-
-            <h2 class="section-title">
-                More than an agency.
-            </h2>
-
-            <p>
-                Editors Hub is also a community where editors can
-                connect, collaborate, improve their skills and discover
-                opportunities.
-            </p>
-
-            <div class="community-list">
-
-                <div class="community-item">
-                    <div class="check">✓</div>
-                    Connect with other editors
-                </div>
-
-                <div class="community-item">
-                    <div class="check">✓</div>
-                    Share work and receive feedback
-                </div>
-
-                <div class="community-item">
-                    <div class="check">✓</div>
-                    Find collaboration opportunities
-                </div>
-
-                <div class="community-item">
-                    <div class="check">✓</div>
-                    Grow with a creative network
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="community-panel">
-
-            <div class="small">Editors Hub Community</div>
-
-            <h3>Build. Learn. Create.</h3>
-
-            <p>
-                A place for editors and creators to meet,
-                collaborate and build something bigger.
-            </p>
-
-            <a href="https://discord.gg/64EQb3pxQ" class="btn btn-primary">
-                Enter Editors Hub
-            </a>
-
-        </div>
-
-    </div>
+<section class="section showreel" id="work">
+<div class="wrap">
+<div class="section-head">
+<div><div class="eyebrow">03 / THE SHOWREEL</div>
+<h2>Good work has<br>a certain <span style="color:#83a8ff">feeling.</span></h2></div>
+<p>Every frame, shape and detail has a purpose. Explore the creative direction of Editors Hub.</p>
+</div>
+<div class="reel-box" id="reel">
+<div class="reel-object"></div>
+<div class="reel-title">CREATE.<br><span>CONNECT.</span></div>
+<button class="reel-play" id="play">▷</button>
+</div>
+</div>
 </section>
 
-
-<!-- PROCESS -->
-
-<section>
-
-    <div class="container">
-
-        <div class="section-head">
-
-            <div>
-                <div class="section-kicker">Our Process</div>
-                <h2 class="section-title">Simple. Clear. Creative.</h2>
-            </div>
-
-        </div>
-
-
-        <div class="process-grid">
-
-            <div class="process">
-                <span>01</span>
-                <h3>Brief</h3>
-                <p>
-                    You tell us what you're trying to achieve.
-                </p>
-            </div>
-
-            <div class="process">
-                <span>02</span>
-                <h3>Match</h3>
-                <p>
-                    We connect the project with the right creative.
-                </p>
-            </div>
-
-            <div class="process">
-                <span>03</span>
-                <h3>Create</h3>
-                <p>
-                    The editor turns the concept into finished content.
-                </p>
-            </div>
-
-            <div class="process">
-                <span>04</span>
-                <h3>Deliver</h3>
-                <p>
-                    You receive polished content ready to publish.
-                </p>
-            </div>
-
-        </div>
-
-    </div>
+<section class="section">
+<div class="wrap">
+<div class="section-head">
+<div><div class="eyebrow">04 / THE PROCESS</div>
+<h2>From first thought<br>to <span class="blue">final cut.</span></h2></div>
+<p>A clear process keeps creative work focused, collaborative and consistent.</p>
+</div>
+<div class="process">
+<div class="process-item"><small>01 / DISCOVER</small><h3>Understand</h3><p>We learn about your brand, audience and objectives.</p></div>
+<div class="process-item"><small>02 / PLAN</small><h3>Strategise</h3><p>We define the direction, deliverables and timeline.</p></div>
+<div class="process-item"><small>03 / CREATE</small><h3>Produce</h3><p>Our specialists turn the plan into a tangible first version.</p></div>
+<div class="process-item"><small>04 / REFINE</small><h3>Polish</h3><p>Feedback, detail and quality checks bring it together.</p></div>
+<div class="process-item"><small>05 / DELIVER</small><h3>Final files</h3><p>Approved assets, organised and ready to publish.</p></div>
+</div>
+</div>
 </section>
 
-
-<!-- ABOUT -->
-
-<section id="about">
-
-    <div class="container about-grid">
-
-        <div class="about-text">
-
-            <div class="section-kicker">About Editors Hub</div>
-
-            <h2 class="section-title">
-                A network of creative minds.
-            </h2>
-
-            <p>
-                Editors Hub was created around a simple idea:
-                talented editors should have a place where their skills
-                can meet real opportunities.
-            </p>
-
-            <p>
-                We bring together editing, design and creative talent
-                to help creators and businesses produce better digital
-                content.
-            </p>
-
-        </div>
-
-
-        <div class="about-stats">
-
-            <div class="stat">
-                <strong>01</strong>
-                <span>Creative Network</span>
-            </div>
-
-            <div class="stat">
-                <strong>24/7</strong>
-                <span>Community Access</span>
-            </div>
-
-            <div class="stat">
-                <strong>04+</strong>
-                <span>Core Services</span>
-            </div>
-
-            <div class="stat">
-                <strong>∞</strong>
-                <span>Creative Possibilities</span>
-            </div>
-
-        </div>
-
-    </div>
+<section class="section network">
+<div class="wrap">
+<div class="section-head">
+<div><div class="eyebrow">05 / CREATOR NETWORK</div>
+<h2>Find the voice<br>that <span class="blue">fits.</span></h2></div>
+<p>Influencer campaigns are about matching a brand with creators whose audience and style make sense.</p>
+</div>
+<div class="network-board">
+<svg viewBox="0 0 900 420" preserveAspectRatio="none">
+<g stroke="#8eafff" stroke-opacity=".65" stroke-width="1.5">
+<path d="M450 205L170 80M450 205L350 55M450 205L690 80M450 205L760 220M450 205L590 340M450 205L260 330M450 205L110 220"/>
+</g>
+</svg>
+<button class="network-node core" style="left:50%;top:49%" data-info="Every creator campaign starts with a clear brand brief, objective and audience.">BRAND<br>BRIEF</button>
+<button class="network-node" style="left:19%;top:19%" data-info="Lifestyle creators bring products into everyday stories and routines.">LIFESTYLE</button>
+<button class="network-node" style="left:39%;top:13%" data-info="Tech creators make complex products easier to understand.">TECH</button>
+<button class="network-node" style="left:77%;top:19%" data-info="Gaming creators connect brands with engaged communities.">GAMING</button>
+<button class="network-node" style="left:84%;top:53%" data-info="Fitness creators deliver focused, routine-driven content.">FITNESS</button>
+<button class="network-node" style="left:66%;top:81%" data-info="Fashion creators translate products into visual identity and style.">FASHION</button>
+<button class="network-node" style="left:29%;top:80%" data-info="Education creators build trust through useful explanations.">EDUCATION</button>
+<button class="network-node" style="left:12%;top:53%" data-info="Food creators make discovery feel personal and immediate.">FOOD</button>
+<div class="network-info" id="networkInfo"><b>Explore the network</b>Tap a category to see how it can fit a campaign.</div>
+</div>
+</div>
 </section>
 
-
-<!-- CTA -->
-
-<section id="contact">
-
-    <div class="container">
-
-        <div class="cta">
-
-            <div class="section-kicker">Let's Work Together</div>
-
-            <h2 class="section-title">
-                Have something worth creating?
-            </h2>
-
-            <p>
-                Tell us what you're building and let's turn the idea
-                into content that stands out.
-            </p>
-
-            <div class="hero-actions" style="justify-content:center;">
-
-                <a href="#community" class="btn btn-primary">
-                    Join Editors Hub
-                </a>
-
-                <a href="#work" class="btn btn-outline">
-                    See Our Work
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
+<section class="cta" id="contact">
+<div class="wrap cta-inner">
+<div>
+<div class="eyebrow">06 / YOUR NEXT MOVE</div>
+<h2>Let's make<br>something <span style="color:#83a8ff">matter.</span></h2>
+<p>Have a project, a campaign or an idea you're ready to move forward? Tell us what you're building.</p>
+</div>
+<a class="primary" href="https://discord.gg/64EQb3pxQ" target="_blank" rel="noopener">LET'S DISCUSS YOUR PROJECT ↗</a>
+</div>
 </section>
-
 </main>
 
-
-<!-- FOOTER -->
-
 <footer>
-
-    <div class="container">
-
-        <div class="footer-top">
-
-            <div class="footer-brand">
-
-                <img src="file_00000000a0bc820bab5b7a810ce500e4.png"
-                     alt="Editors Hub">
-
-                <span>EDITORS HUB</span>
-
-            </div>
-
-            <div class="footer-links">
-                <a href="#work">Work</a>
-                <a href="#services">Services</a>
-                <a href="#community">Community</a>
-                <a href="#about">About</a>
-            </div>
-
-        </div>
-
-        <div class="copyright">
-            © 2026 Editors Hub. All rights reserved.
-        </div>
-
-    </div>
-
+<div class="wrap">
+<div class="footer-top">
+<div class="footer-brand">EDITORS <span>HUB.</span></div>
+<div class="footer-links">
+<a href="#services">Services</a>
+<a href="#work">Work</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+<a href="https://discord.gg/64EQb3pxQ" target="_blank">Discord ↗</a>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© 2026 EDITORS HUB · CREATIVE, IN MOTION.</span>
+<span>VIDEO · DESIGN · INFLUENCE</span>
+<a href="#top">BACK TO TOP ↑</a>
+</div>
+</div>
 </footer>
 
+<script>
+const $=s=>document.querySelector(s);
+const $$=s=>[...document.querySelectorAll(s)];
+
+const nav=$('#nav');
+$('#menu').onclick=()=>{
+nav.classList.toggle('open');
+$('#menu').textContent=nav.classList.contains('open')?'×':'☰';
+};
+
+$$('.navlinks a').forEach(a=>a.addEventListener('click',()=>{
+nav.classList.remove('open');
+$('#menu').textContent='☰';
+}));
+
+addEventListener('scroll',()=>{
+const max=document.documentElement.scrollHeight-innerHeight;
+$('#progress').style.width=(max?scrollY/max*100:0)+'%';
+});
+
+$$('.service-card').forEach(card=>{
+card.onclick=()=>{
+$$('.service-card').forEach(c=>c.classList.remove('active'));
+card.classList.add('active');
+};
+});
+
+$$('.network-node').forEach(node=>{
+node.onclick=()=>{
+$$('.network-node').forEach(n=>n.classList.remove('selected'));
+node.classList.add('selected');
+$('#networkInfo').innerHTML='<b>'+node.textContent.trim()+'</b>'+node.dataset.info;
+};
+});
+
+$('#reel').onclick=()=>{
+$('#play').textContent=$('#play').textContent==='Ⅱ'?'▷':'Ⅱ';
+};
+
+if(matchMedia('(pointer:fine)').matches){
+$('#visualStage').onpointermove=e=>{
+const r=e.currentTarget.getBoundingClientRect();
+const x=(e.clientX-r.left)/r.width-.5;
+const y=(e.clientY-r.top)/r.height-.5;
+e.currentTarget.style.transform=`rotateY(${x*5}deg) rotateX(${-y*4}deg)`;
+};
+$('#visualStage').onpointerleave=()=>$('#visualStage').style.transform='';
+}
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.style.opacity='1';
+entry.target.style.transform='translateY(0)';
+observer.unobserve(entry.target);
+}
+});
+},{threshold:.12});
+
+$$('.section-head,.service-card,.manifesto-grid,.process-item,.cta-inner').forEach(el=>{
+el.style.opacity='0';
+el.style.transform='translateY(24px)';
+el.style.transition='opacity .8s ease,transform .8s ease';
+observer.observe(el);
+});
+</script>
 </body>
 </html>
