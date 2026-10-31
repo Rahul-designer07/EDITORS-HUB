@@ -604,8 +604,8 @@ footer{border-radius:32px 32px 0 0;margin-top:-32px}
 }
 </style>
 </head>
-
 <body>
+
 <div class="loader" aria-hidden="true"><div class="loader-in"><span class="brand-mark">EH</span><div class="loader-bar"></div></div></div>
 <div id="progress"></div>
 
@@ -1043,7 +1043,7 @@ void main(){
     t+=d*.85;
     if(t>8.)break;
   }
-  float a=hit?1.:1.-smoothstep(0.,.014,md);
+  float a=hit?1.:1.-smoothstep(0.,.009,md);
   if(a<.01){gl_FragColor=vec4(0.);return;}
   vec3 p=ro+rd*(hit?t:tm);
   vec3 n=nrm(p);
@@ -1079,14 +1079,14 @@ function makeChrome(canvas,shape,scale){
   let sc=scale,ema=16,last=0;
   const api={
     resize(){
-      const r=canvas.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,1.5)*sc;
+      const r=canvas.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2)*sc;
       const w=Math.max(2,Math.round(r.width*d)),h=Math.max(2,Math.round(r.height*d));
       if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h}
       gl.viewport(0,0,canvas.width,canvas.height);
     },
     draw(t,mx,my,now){
       if(now){
-        if(last){ema=ema*.92+(now-last)*.08;if(ema>40&&sc>.42){sc-=.08;ema=16;api.resize()}}
+        if(last){ema=ema*.92+(now-last)*.08;if(ema>34&&sc>.6){sc-=.1;ema=16;api.resize()}}
         last=now;
       }
       gl.clear(gl.COLOR_BUFFER_BIT);
@@ -1100,8 +1100,8 @@ function makeChrome(canvas,shape,scale){
 }
 const small=innerWidth<700;
 const stage=$('#visualStage'),reel=$('#reel');
-const chromeA=makeChrome($('#heroCanvas'),0,small?.55:.8);
-const chromeB=makeChrome($('#reelCanvas'),1,small?.55:.75);
+const chromeA=makeChrome($('#heroCanvas'),0,1);
+const chromeB=makeChrome($('#reelCanvas'),1,1);
 if(chromeA){
   stage.classList.add('gl-ok');
   $('#heroCanvas').addEventListener('glfail',()=>stage.classList.remove('gl-ok'));
